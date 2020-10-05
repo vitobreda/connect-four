@@ -70,3 +70,8 @@ span.player-two{
   background-color: #0cce6b !important;
   border-radius: 50px;
 }
+
+#restart-btn {
+  border-radius: 50px;
+  margin-bottom: 7px !important;
+}

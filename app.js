@@ -1,40 +1,44 @@
 document.addEventListener("DOMContentLoaded", () => {
   const squares = document.querySelectorAll(".grid div");
   const result = document.querySelector("#result");
+  const restartBtn = document.getElementById("restart-btn");
   const displayCurrentPlayer = document.querySelector("#current-player");
   let currentPlayer = 1;
+  let gameOver = false;
 
   for (var i = 0, len = squares.length; i < len; i++)
     (function (index) {
       //add an onclick to each square in your grid
       squares[i].onclick = function () {
-        //if the square below your current square is taken you can go ontop of it
-        if (squares[index + 7].classList.contains("taken")) {
-          //check if is allready selected
-          if (
-            squares[index].classList.contains("player-one") ||
-            squares[index].classList.contains("player-two")
-          ) {
-            alert("Cant pick this");
-          } else {
-            if (currentPlayer === 1) {
-              squares[index].classList.add("taken");
-              squares[index].classList.add("player-one");
-              //change the player
-              currentPlayer = 2;
-              displayCurrentPlayer.innerHTML = currentPlayer;
-              displayCurrentPlayer.className = 'player-two'
-            } else if (currentPlayer === 2) {
-              squares[index].classList.add("taken");
-              squares[index].classList.add("player-two");
-              //change the player
-              currentPlayer = 1;
-              displayCurrentPlayer.innerHTML = currentPlayer;
-              displayCurrentPlayer.className = 'player-one'
+        if (!gameOver) {
+          //if the square below your current square is taken you can go ontop of it
+          if (squares[index + 7].classList.contains("taken")) {
+            //check if is allready selected
+            if (
+              squares[index].classList.contains("player-one") ||
+              squares[index].classList.contains("player-two")
+            ) {
+              alert("Cant pick this");
+            } else {
+              if (currentPlayer === 1) {
+                squares[index].classList.add("taken");
+                squares[index].classList.add("player-one");
+                //change the player
+                currentPlayer = 2;
+                displayCurrentPlayer.innerHTML = currentPlayer;
+                displayCurrentPlayer.className = 'player-two'
+              } else if (currentPlayer === 2) {
+                squares[index].classList.add("taken");
+                squares[index].classList.add("player-two");
+                //change the player
+                currentPlayer = 1;
+                displayCurrentPlayer.innerHTML = currentPlayer;
+                displayCurrentPlayer.className = 'player-one'
+              }
             }
-          }
-          //if the square below yout current square is not taken, you can't go here
-        } else alert("cant go here");
+            //if the square below yout current square is not taken, you can't go here
+          } else alert("cant go here");
+        } else alert("the game is over");
       };
     })(i);
 
@@ -128,6 +132,7 @@ document.addEventListener("DOMContentLoaded", () => {
       ) {
         //if they do, player-one is passed as the winner
         result.innerHTML = "Player one wins!";
+        gameOver = true;
         //remove ability to change result
       }
       //now check to see if they all have the classname player two
@@ -139,8 +144,36 @@ document.addEventListener("DOMContentLoaded", () => {
       ) {
         //if they do, player-two is passed as the winner as well as the chip positions
         result.innerHTML = "Player two wins!";
+        gameOver = true;
       }
     }
+
+    if (gameOver) {
+      restartBtn.style.visibility = "visible";
+      restartBtn.addEventListener("click", restart);
+    }
+  }
+
+  function restart () {
+    for (let i = 0; i < squares.length; i++) {
+      //check if is already selected
+      if (
+        squares[i].classList.contains("player-one") ||
+        squares[i].classList.contains("player-two")
+      ) {
+        // remove classes
+        squares[i].classList.remove("taken");
+        squares[i].classList.remove("player-one");
+        squares[i].classList.remove("player-two");
+      }
+    }
+
+    restartBtn.style.visibility = "hidden";
+    result.innerHTML = '';
+    currentPlayer = 1;
+    displayCurrentPlayer.innerHTML = currentPlayer;
+    displayCurrentPlayer.className = 'player-one';
+    gameOver = false;
   }
 
   //add an event listener to each square that will trigger the checkBoard function on click
