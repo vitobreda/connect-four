@@ -8,6 +8,20 @@ body {
   justify-content: center;
 }
 
+span.player-one{
+  color: white;
+  background: #f58f29 ;
+  padding: 8px;
+  border-radius: 4px;
+}
+
+span.player-two{
+  color: white;
+  background: #0cce6b;
+  padding: 8px;
+  border-radius: 4px;
+}
+
 .grid {
   border: 1px solid;
   display: flex;
