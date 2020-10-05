@@ -1,22 +1,58 @@
+body {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 .grid {
-    border: 1px solid;
-    display: flex;
-    flex-wrap: wrap;
-    height: 600px;
-    width: 700px;
+  border: 1px solid;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  height: 500px;
+  border-left: 20px solid #54494b;
+  border-right: 20px solid #54494b;
+  background: #4056f4;
+  padding-bottom: 10px;
+  border-radius: 8px;
+  width: 600px;
 }
 
 .grid div {
-    height: 100px;
-    width: 100px;
+  background: white;
+  height: 80px;
+  width: 80px;
+  margin: 2px;
+  border-radius: 50px;
+}
+
+.last {
+  display: flex;
+  flex-direction: row;
+  width: 100% !important ;
+  height: 30px !important;
+  border-radius: 0 !important;
+  border-top-left-radius: 70px !important;
+  border-top-right-radius: 70px !important;
+  margin-top: 7px !important;
+  background-color: #ff1b1c !important;
+}
+
+.last div {
+  background: transparent !important;
 }
 
 .player-one {
-    background-color: red;
-    border-radius: 50px;
+  background-color: #f58f29 !important;
+  border-radius: 50px;
 }
 
 .player-two {
-    background-color: blue;
-    border-radius: 50px;
+  background-color: #0cce6b !important;
+  border-radius: 50px;
 }
