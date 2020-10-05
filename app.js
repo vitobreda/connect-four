@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const displayCurrentPlayer = document.querySelector("#current-player");
   let currentPlayer = 1;
 
+  //addEventListener function
   for (var i = 0, len = squares.length; i < len; i++)
     (function (index) {
       //add an onclick to each square in your grid
@@ -128,6 +129,11 @@ document.addEventListener("DOMContentLoaded", () => {
       ) {
         //if they do, player-one is passed as the winner
         result.innerHTML = "Player one wins!";
+        document.addEventListener('click', (e) => {
+          e.stopPropagation();
+          e.preventDefault();
+        }, true);
+        restart();
         //remove ability to change result
       }
       //now check to see if they all have the classname player two
@@ -139,6 +145,11 @@ document.addEventListener("DOMContentLoaded", () => {
       ) {
         //if they do, player-two is passed as the winner as well as the chip positions
         result.innerHTML = "Player two wins!";
+        document.addEventListener('click', (e) => {
+          e.stopPropagation();
+          e.preventDefault();
+        }, true);
+        restart();
       }
     }
   }
@@ -146,3 +157,9 @@ document.addEventListener("DOMContentLoaded", () => {
   //add an event listener to each square that will trigger the checkBoard function on click
   squares.forEach((square) => square.addEventListener("click", checkBoard));
 });
+
+function restart(ms = 2500) {
+  setTimeout(() => {
+    location.reload();
+  }, ms)
+}
