@@ -23,12 +23,14 @@ document.addEventListener("DOMContentLoaded", () => {
               //change the player
               currentPlayer = 2;
               displayCurrentPlayer.innerHTML = currentPlayer;
+              displayCurrentPlayer.className = 'player-two'
             } else if (currentPlayer === 2) {
               squares[index].classList.add("taken");
               squares[index].classList.add("player-two");
               //change the player
               currentPlayer = 1;
               displayCurrentPlayer.innerHTML = currentPlayer;
+              displayCurrentPlayer.className = 'player-one'
             }
           }
           //if the square below yout current square is not taken, you can't go here
