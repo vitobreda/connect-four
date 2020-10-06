@@ -21,7 +21,7 @@ This a two player game which has the following rules:
 
 ## Screenshots
 
-![InGame Screens](screenshots/1.png?raw=true "InGame Screen")
+![InGame Screens](screenshots/1.PNG?raw=true "InGame Screen")
 
-![Winner Screen](screenshots/2.png?raw=true "Winner Screen")
+![Winner Screen](screenshots/2.PNG?raw=true "Winner Screen")
 
